@@ -7,6 +7,7 @@ import android.os.Handler;
 import android.preference.PreferenceManager;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -21,6 +22,7 @@ import android.view.animation.Transformation;
 import android.widget.LinearLayout;
 
 import com.example.gerrys.charperone.Fragment.VolumeFragment;
+import com.example.gerrys.charperone.Fragment.addProduct;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -32,11 +34,13 @@ public class MainActivity extends AppCompatActivity
     private NavigationView mNavigationView;
     private int mSelectedId;
     private Toolbar mToolbar;
-
+    String mercId = " ";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_awal);
+
+
 
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         mToolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -45,7 +49,7 @@ public class MainActivity extends AppCompatActivity
         mNavigationView = (NavigationView) findViewById(R.id.navigation_view);
         assert mNavigationView != null;
         mNavigationView.setNavigationItemSelectedListener(this);
-
+        mercId = getIntent().getStringExtra("MerchantId");
         ActionBarDrawerToggle mDrawerToggle = new ActionBarDrawerToggle(this,
                 mDrawerLayout, mToolbar, R.string.navigation_drawer_open,
                 R.string.navigation_drawer_close) {
@@ -103,11 +107,19 @@ public class MainActivity extends AppCompatActivity
     private void navigate(final int itemId) {
         final View elevation = findViewById(R.id.elevation);
         Fragment navFragment = null;
+        FragmentManager manager = getSupportFragmentManager();
+        FragmentTransaction t = manager.beginTransaction();
+        Bundle b = new Bundle();
+        b.putString("merch",mercId);
+
         switch (itemId) {
             case R.id.nav_1:
                 mPrevSelectedId = itemId;
                 setTitle(R.string.nav_home);
-                navFragment = new VolumeFragment();
+                navFragment = new addProduct();
+                navFragment.setArguments(b);
+                t.add(R.id.content_frame,navFragment);
+                t.commit();
                 break;
             case R.id.nav_2:
                 mPrevSelectedId = itemId;

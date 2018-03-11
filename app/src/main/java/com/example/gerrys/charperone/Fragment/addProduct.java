@@ -32,12 +32,12 @@ public class addProduct extends Fragment {
         Price = (MaterialEditText)v.findViewById(R.id.Price);
         Description = (MaterialEditText)v.findViewById(R.id.decription);
         btnSignUp = (Button) v.findViewById(R.id.btnSignUp);
-
+        Bundle b1= getArguments();
         // I
         // nitialize firebase
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         final DatabaseReference table_user = database.getReference("Product");
-        //mercId = getIntent().getStringExtra("MerchantId");
+        mercId = b1.getString("merch");
         btnSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
