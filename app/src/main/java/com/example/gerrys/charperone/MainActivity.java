@@ -22,7 +22,6 @@ import android.view.animation.Transformation;
 import android.widget.LinearLayout;
 
 import com.example.gerrys.charperone.Fragment.VolumeFragment;
-import com.example.gerrys.charperone.Fragment.addProduct;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -109,18 +108,14 @@ public class MainActivity extends AppCompatActivity
         Fragment navFragment = null;
         FragmentManager manager = getSupportFragmentManager();
         FragmentTransaction t = manager.beginTransaction();
-        Bundle b = new Bundle();
-        b.putString("merch",mercId);
+
 
         switch (itemId) {
             case R.id.nav_1:
-                mPrevSelectedId = itemId;
-                setTitle(R.string.nav_home);
-                navFragment = new addProduct();
-                navFragment.setArguments(b);
-                t.add(R.id.content_frame,navFragment);
-                t.commit();
-                break;
+
+            mPrevSelectedId = itemId;
+            setTitle(R.string.nav_reward);
+            navFragment = new VolumeFragment();
             case R.id.nav_2:
                 mPrevSelectedId = itemId;
                 setTitle(R.string.nav_reward);
@@ -131,7 +126,9 @@ public class MainActivity extends AppCompatActivity
             //mNavigationView.getMenu().findItem(mPrevSelectedId).setChecked(true);
             //return;
             case R.id.nav_6:
-                startActivity(new Intent(this, AboutActivity.class));
+                Intent intent = new Intent(MainActivity.this, addProduct.class);
+                intent.putExtra("merch", mercId );
+                startActivity(intent);
                 mNavigationView.getMenu().findItem(mPrevSelectedId).setChecked(true);
                 return;
         }

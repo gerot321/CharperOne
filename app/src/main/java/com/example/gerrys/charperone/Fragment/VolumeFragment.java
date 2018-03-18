@@ -51,7 +51,7 @@ public class VolumeFragment extends Fragment {
         public Fragment getItem(int i) {
             switch (i) {
                 case 0:
-                    return new addProduct();
+                    return new TabGeoCone();
                 case 1:
                     return new TabGeoCone();
                 case 2:
