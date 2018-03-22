@@ -121,12 +121,18 @@ public class MainActivity extends AppCompatActivity
                 setTitle(R.string.nav_reward);
                 navFragment = new VolumeFragment();
                 break;
+            case R.id.nav_3:
+                Intent intent = new Intent(MainActivity.this, ConfirmationAdmin.class);
+
+                startActivity(intent);
+                mNavigationView.getMenu().findItem(mPrevSelectedId).setChecked(true);
+                return;
             //case R.id.nav_5:
             //startActivity(new Intent(this, SettingsActivity.class));
             //mNavigationView.getMenu().findItem(mPrevSelectedId).setChecked(true);
             //return;
             case R.id.nav_6:
-                Intent intent = new Intent(MainActivity.this, addProduct.class);
+                intent = new Intent(MainActivity.this, addProduct.class);
                 intent.putExtra("merch", mercId );
                 startActivity(intent);
                 mNavigationView.getMenu().findItem(mPrevSelectedId).setChecked(true);

@@ -2,37 +2,32 @@ package com.example.gerrys.charperone.ViewHolder;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.gerrys.charperone.Interface.ItemClickListener;
+import com.example.gerrys.charperone.R;
 
-/**
- * Created by Cj_2 on 2017-11-12.
- */
 
 public class ConfirmationViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-    public TextView confirmation_id;
-    public ImageView shoe_image;
+    public TextView txtOrderId;
 
     private ItemClickListener itemClickListener;
-
-    public void setItemClickListener(ItemClickListener itemClickListener) {
-        this.itemClickListener = itemClickListener;
-    }
 
     public ConfirmationViewHolder(View itemView) {
         super(itemView);
 
-        //confirmation_id = itemView.findViewById(R.id.shoe_name);
-        //shoe_image = itemView.findViewById(R.id.shoe_image);
+        txtOrderId = (TextView)itemView.findViewById(R.id.order_id);
 
         itemView.setOnClickListener(this);
 
     }
 
+    public void setItemClickListener(ItemClickListener itemClickListener) {
+        this.itemClickListener = itemClickListener;
+    }
+
     @Override
-    public void onClick(View view) {
-        itemClickListener.onClick(view, getAdapterPosition(), false);
+    public void onClick(View v) {
+        itemClickListener.onClick(v, getAdapterPosition(), false);
     }
 }
