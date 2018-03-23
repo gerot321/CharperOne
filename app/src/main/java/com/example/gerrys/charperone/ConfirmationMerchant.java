@@ -9,11 +9,14 @@ import android.view.View;
 
 import com.example.gerrys.charperone.Common.Common;
 import com.example.gerrys.charperone.Interface.ItemClickListener;
-import com.example.gerrys.charperone.Model.Request;
+import com.example.gerrys.charperone.Model.productRequest;
 import com.example.gerrys.charperone.ViewHolder.ConfirmationViewHolder;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class ConfirmationMerchant extends AppCompatActivity {
 
@@ -21,9 +24,9 @@ public class ConfirmationMerchant extends AppCompatActivity {
     public RecyclerView.LayoutManager layoutManager;
 
     FirebaseDatabase database;
-    DatabaseReference confirm;
-
-    FirebaseRecyclerAdapter<Request, ConfirmationViewHolder> adapter;
+    DatabaseReference confirm,prodReq;
+    String mercId;
+    FirebaseRecyclerAdapter<productRequest, ConfirmationViewHolder> adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,30 +36,44 @@ public class ConfirmationMerchant extends AppCompatActivity {
 
         database = FirebaseDatabase.getInstance();
         confirm = database.getReference("Requests");
-
+        prodReq = database.getReference("productReq");
         recyclerView = (RecyclerView)findViewById(R.id.listOrders);
         recyclerView.setHasFixedSize(true);
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
 
         loadOrders(Common.currentUser.getPhone());
+
     }
 
     private void loadOrders(String phone) {
-        adapter = new FirebaseRecyclerAdapter<Request , ConfirmationViewHolder>(
-                Request.class,
+        adapter = new FirebaseRecyclerAdapter<productRequest, ConfirmationViewHolder>(
+                productRequest.class,
                 R.layout.confirmation_layout,
                 ConfirmationViewHolder.class,
-                confirm.orderByChild("status").equalTo("Confirmed")
+                prodReq.orderByChild("status").equalTo("diteruskan ke merchant")
         ) {
 
-            protected void populateViewHolder(ConfirmationViewHolder viewHolder, Request model, int position) {
+            protected void populateViewHolder(final ConfirmationViewHolder viewHolder, productRequest model, final int position) {
+                prodReq.child(adapter.getRef(position).getKey().toString()).addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        productRequest prods = dataSnapshot.getValue(productRequest.class);
+                        if(getIntent().getStringExtra("merch").equals(prods.getMerchantid().toString())){
+                            viewHolder.txtOrderId.setText(adapter.getRef(position).getKey());
+                        }
+                    }
 
-                viewHolder.txtOrderId.setText(adapter.getRef(position).getKey());
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+
+                    }
+                });
+
                 viewHolder.setItemClickListener(new ItemClickListener() {
                     @Override
                     public void onClick(View view, int position, boolean isLongCLick) {
-                        Intent intent = new Intent(ConfirmationMerchant.this, ConfirmationDetail.class);
+                        Intent intent = new Intent(ConfirmationMerchant.this, ConfirmationMerchantDetail.class);
                         intent.putExtra("ConfirmationId", adapter.getRef(position).getKey());
                         startActivity(intent);
                     }

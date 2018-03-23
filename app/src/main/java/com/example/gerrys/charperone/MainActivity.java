@@ -90,18 +90,7 @@ public class MainActivity extends AppCompatActivity
         }
     }
 
-    public void switchFragment(int itemId) {
-        mSelectedId = mNavigationView.getMenu().getItem(itemId).getItemId();
-        mNavigationView.getMenu().findItem(mSelectedId).setChecked(true);
-        mDrawerHandler.removeCallbacksAndMessages(null);
-        mDrawerHandler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                navigate(mSelectedId);
-            }
-        }, 250);
-        mDrawerLayout.closeDrawers();
-    }
+
 
     private void navigate(final int itemId) {
         final View elevation = findViewById(R.id.elevation);
@@ -116,14 +105,22 @@ public class MainActivity extends AppCompatActivity
             mPrevSelectedId = itemId;
             setTitle(R.string.nav_reward);
             navFragment = new VolumeFragment();
+            break;
             case R.id.nav_2:
-                mPrevSelectedId = itemId;
-                setTitle(R.string.nav_reward);
-                navFragment = new VolumeFragment();
-                break;
+                Intent intent = new Intent(MainActivity.this, ConfirmationMerchant.class);
+                intent.putExtra("merch", mercId );
+                startActivity(intent);
+                mNavigationView.getMenu().findItem(mPrevSelectedId).setChecked(true);
+                return;
             case R.id.nav_3:
-                Intent intent = new Intent(MainActivity.this, ConfirmationAdmin.class);
-
+                intent = new Intent(MainActivity.this, ConfirmationAdmin.class);
+                intent.putExtra("merch", mercId );
+                startActivity(intent);
+                mNavigationView.getMenu().findItem(mPrevSelectedId).setChecked(true);
+                return;
+            case R.id.nav_4:
+                intent = new Intent(MainActivity.this, ConfirmationCourier.class);
+                intent.putExtra("merch", mercId );
                 startActivity(intent);
                 mNavigationView.getMenu().findItem(mPrevSelectedId).setChecked(true);
                 return;

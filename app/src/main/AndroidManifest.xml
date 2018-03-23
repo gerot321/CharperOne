@@ -23,6 +23,10 @@
         <activity android:name=".AboutActivity" />
         <activity android:name=".ConfirmationAdmin" />
         <activity android:name=".ConfirmationDetail" />
+        <activity android:name=".ConfirmationMerchant" />
+        <activity android:name=".ConfirmationMerchantDetail" />
+        <activity android:name=".ConfirmationCourier" />
+        <activity android:name=".ConfirmationKurirDetail" />
 
     </application>
 

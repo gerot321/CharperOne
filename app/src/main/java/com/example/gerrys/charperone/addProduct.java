@@ -120,6 +120,7 @@ public class addProduct extends AppCompatActivity {
                                 public void onProgress(UploadTask.TaskSnapshot taskSnapshot) {
                                     double progress = (100.0 * taskSnapshot.getBytesTransferred() / taskSnapshot.getTotalByteCount());
                                     mProgressBar.setProgress((int) progress);
+
                                 }
                             });
                 } else {

@@ -9,17 +9,17 @@ public class Order {
     private String ProductName;
     private String Quantity;
     private String Price;
-    private String Size;
+    private String Address;
 
     public Order() {
     }
 
-    public Order(String productId, String productName, String quantity, String price, String size) {
+    public Order(String productId, String productName, String quantity, String price, String address) {
         ProductId = productId;
         ProductName = productName;
         Quantity = quantity;
         Price = price;
-        Size = size;
+        Address = address;
     }
 
     public String getProductId() {
@@ -54,11 +54,11 @@ public class Order {
         Price = price;
     }
 
-    public String getSize() {
-        return Size;
+    public String getAddress() {
+        return Address;
     }
 
-    public void setSize(String size) {
-        Size = size;
+    public void setAddress(String address) {
+        Address = address;
     }
 }

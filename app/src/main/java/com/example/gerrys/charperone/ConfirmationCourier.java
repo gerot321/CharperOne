@@ -9,21 +9,21 @@ import android.view.View;
 
 import com.example.gerrys.charperone.Common.Common;
 import com.example.gerrys.charperone.Interface.ItemClickListener;
-import com.example.gerrys.charperone.Model.Confirmation;
+import com.example.gerrys.charperone.Model.productRequest;
 import com.example.gerrys.charperone.ViewHolder.ConfirmationViewHolder;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-public class ConfirmationAdmin extends AppCompatActivity {
+public class ConfirmationCourier extends AppCompatActivity {
 
     public RecyclerView recyclerView;
     public RecyclerView.LayoutManager layoutManager;
 
     FirebaseDatabase database;
-    DatabaseReference confirm;
-
-    FirebaseRecyclerAdapter<Confirmation, ConfirmationViewHolder> adapter;
+    DatabaseReference confirm,prodReq;
+    String mercId;
+    FirebaseRecyclerAdapter<productRequest, ConfirmationViewHolder> adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,32 +32,34 @@ public class ConfirmationAdmin extends AppCompatActivity {
 
 
         database = FirebaseDatabase.getInstance();
-
-        confirm = database.getReference("Confirmation");
-
+        confirm = database.getReference("Requests");
+        prodReq = database.getReference("productReq");
         recyclerView = (RecyclerView)findViewById(R.id.listOrders);
         recyclerView.setHasFixedSize(true);
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
 
         loadOrders(Common.currentUser.getPhone());
+
     }
 
     private void loadOrders(String phone) {
-        adapter = new FirebaseRecyclerAdapter<Confirmation  , ConfirmationViewHolder>(
-                Confirmation.class,
+        adapter = new FirebaseRecyclerAdapter<productRequest, ConfirmationViewHolder>(
+                productRequest.class,
                 R.layout.confirmation_layout,
                 ConfirmationViewHolder.class,
-                confirm.orderByChild("status").equalTo("Waiting Admin Confirmation")
+                prodReq.orderByChild("status").equalTo("Order Has been Ready")
         ) {
 
-            protected void populateViewHolder(ConfirmationViewHolder viewHolder, Confirmation model, int position) {
-
+            protected void populateViewHolder(final ConfirmationViewHolder viewHolder, productRequest model, final int position) {
                 viewHolder.txtOrderId.setText(adapter.getRef(position).getKey());
+
+
+
                 viewHolder.setItemClickListener(new ItemClickListener() {
                     @Override
                     public void onClick(View view, int position, boolean isLongCLick) {
-                        Intent intent = new Intent(ConfirmationAdmin.this, ConfirmationDetail.class);
+                        Intent intent = new Intent(ConfirmationCourier.this, ConfirmationKurirDetail.class);
                         intent.putExtra("ConfirmationId", adapter.getRef(position).getKey());
                         startActivity(intent);
                     }

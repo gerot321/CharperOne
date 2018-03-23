@@ -12,7 +12,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.gerrys.charperone.Model.Confirmation;
-import com.example.gerrys.charperone.Model.Order;
 import com.example.gerrys.charperone.Model.productRequest;
 import com.example.gerrys.charperone.ViewHolder.ConfirmationViewHolder;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
@@ -25,27 +24,31 @@ import com.google.firebase.database.ValueEventListener;
 import java.io.InputStream;
 import java.net.URL;
 
-public class ConfirmationDetail extends AppCompatActivity {
+public class ConfirmationMerchantDetail extends AppCompatActivity {
 
 
     FirebaseDatabase database;
     DatabaseReference confirm,request,prodReq,prod;
     String ID;
-    Confirmation confirmss;
+    productRequest prodss;
     FirebaseRecyclerAdapter<Confirmation, ConfirmationViewHolder> adapter;
-    TextView ConID,Name,Phone;
+    TextView reqId,prodId,prodName,prodQty,prodAddrs,prodPrice;
     ImageView image;
     CardView ConfirmButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_confirmation_detail);
+        setContentView(R.layout.activity_confirmationadmin_detail);
         ID = getIntent().getStringExtra("ConfirmationId");
-        ConID = (TextView)findViewById(R.id.RequestId);
-        Phone = (TextView) findViewById(R.id.AccountId);
-        Name = (TextView)findViewById(R.id.AccountName);
-        image = (ImageView)findViewById(R.id.image_view);
+        reqId = (TextView)findViewById(R.id.reqId);
+        prodId = (TextView)findViewById(R.id.prodId);
+        prodName = (TextView)findViewById(R.id.prodName);
+        prodQty = (TextView)findViewById(R.id.prodQty);
+        prodAddrs = (TextView)findViewById(R.id.addrs);
+        prodPrice = (TextView)findViewById(R.id.prodPrice);
+
+
 
         ConfirmButton = (CardView)findViewById(R.id.confirmPayment);
 
@@ -56,14 +59,16 @@ public class ConfirmationDetail extends AppCompatActivity {
         request = database.getReference("Requests");
         prodReq = database.getReference("productReq");
         prod = database.getReference("Product");
-        confirm.child(ID).addValueEventListener(new ValueEventListener() {
+        prodReq.child(ID).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                confirmss = dataSnapshot.getValue(Confirmation.class);
-                ConID.setText("Request ID : "+confirmss.getId());
-                Phone.setText("Account Number : "+confirmss.getPhone());
-                Name.setText("Name : "+confirmss.getName());
-                new DownLoadImageTask(image).execute(confirmss.getImage());
+                prodss = dataSnapshot.getValue(productRequest.class);
+                reqId.setText("Request ID : "+prodss.getRequestid());
+                prodId.setText("Produk ID : "+prodss.getProductid());
+                prodName.setText("Nama Produk : "+prodss.getProductname());
+                prodQty.setText("Jumlah Pesanan : "+prodss.getProductname());
+                prodAddrs.setText("Alamat Pengiriman : "+prodss.getAddress());
+                prodPrice.setText("Total Biaya : "+prodss.getTotalprice());
 
             }
 
@@ -76,44 +81,11 @@ public class ConfirmationDetail extends AppCompatActivity {
         ConfirmButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                request.child(ID).child("product").addValueEventListener(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(DataSnapshot dataSnapshot) {
-                        for (DataSnapshot child: dataSnapshot.getChildren()) {
-                            final Order orders = child.getValue(Order.class);
+
+                prodReq.child(ID).child("status").setValue("Order Has been Ready");
 
 
-
-                            prod.child(orders.getProductId().toString()).child("MerchantId").addValueEventListener(new ValueEventListener() {
-                                @Override
-
-                                public void onDataChange(DataSnapshot dataSnapshot) {
-
-                                    productRequest req= new productRequest(ID,dataSnapshot.getValue().toString(),orders.getProductId(),
-                                            orders.getProductName().toString(),orders.getQuantity().toString()
-                                            ,orders.getPrice().toString(),orders.getAddress(),"diteruskan ke merchant") ;
-                                    prodReq.push().setValue(req);
-                                }
-
-                                @Override
-                                public void onCancelled(DatabaseError databaseError) {
-
-                                }
-                            });
-
-                        }
-
-                    }
-
-                    @Override
-                    public void onCancelled(DatabaseError databaseError) {
-
-                    }
-                });
-                request.child(ID).child("status").setValue("Confirmed by admin");
-                confirm.child(ID).child("status").setValue("Confirmed by admin");
-
-                Intent intent = new Intent(ConfirmationDetail.this,ConfirmationAdmin.class);
+                Intent intent = new Intent(ConfirmationMerchantDetail.this,ConfirmationMerchant.class);
                 startActivity(intent);
             }
         });
