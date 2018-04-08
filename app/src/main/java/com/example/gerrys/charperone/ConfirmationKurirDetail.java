@@ -81,10 +81,7 @@ public class ConfirmationKurirDetail extends AppCompatActivity {
         ConfirmButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 prodReq.child(ID).child("status").setValue("Order telah sampai pada tujuan");
-
-
                 Intent intent = new Intent(ConfirmationKurirDetail.this,ConfirmationAdmin.class);
                 startActivity(intent);
             }

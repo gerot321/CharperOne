@@ -7,7 +7,6 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
-import com.example.gerrys.charperone.Common.Common;
 import com.example.gerrys.charperone.Interface.ItemClickListener;
 import com.example.gerrys.charperone.Model.Confirmation;
 import com.example.gerrys.charperone.ViewHolder.ConfirmationViewHolder;
@@ -40,10 +39,10 @@ public class ConfirmationAdmin extends AppCompatActivity {
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
 
-        loadOrders(Common.currentUser.getPhone());
+        loadOrders();
     }
 
-    private void loadOrders(String phone) {
+    private void loadOrders() {
         adapter = new FirebaseRecyclerAdapter<Confirmation  , ConfirmationViewHolder>(
                 Confirmation.class,
                 R.layout.confirmation_layout,

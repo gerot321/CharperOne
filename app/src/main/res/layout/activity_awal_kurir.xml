@@ -24,7 +24,7 @@
 
     <android.support.design.widget.NavigationView
         android:id="@+id/navigation_view"
-        app:menu="@menu/activity_main_drawer"
+        app:menu="@menu/activity_main_drawer_kurir"
         android:layout_width="@dimen/nav_drawer_width"
         android:layout_height="match_parent"
         android:background="#FFF"

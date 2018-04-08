@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_1"
+            android:icon="@drawable/ic_cube_outline_black_48dp"
+            android:title="Home" />
+        <item
+            android:id="@+id/nav_4"
+            android:icon="@drawable/ic_message_text_outline_black_48dp"
+            android:title="OrderList  - kurir" />
+
+    </group>
+
+
+
+</menu>

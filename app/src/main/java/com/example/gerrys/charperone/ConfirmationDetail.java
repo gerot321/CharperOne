@@ -81,9 +81,6 @@ public class ConfirmationDetail extends AppCompatActivity {
                     public void onDataChange(DataSnapshot dataSnapshot) {
                         for (DataSnapshot child: dataSnapshot.getChildren()) {
                             final Order orders = child.getValue(Order.class);
-
-
-
                             prod.child(orders.getProductId().toString()).child("MerchantId").addValueEventListener(new ValueEventListener() {
                                 @Override
 
@@ -110,8 +107,8 @@ public class ConfirmationDetail extends AppCompatActivity {
 
                     }
                 });
-                request.child(ID).child("status").setValue("Confirmed by admin");
-                confirm.child(ID).child("status").setValue("Confirmed by admin");
+                request.child(ID).child("status").setValue("Confirmed Order");
+                confirm.child(ID).child("status").setValue("Confirmed Order");
 
                 Intent intent = new Intent(ConfirmationDetail.this,ConfirmationAdmin.class);
                 startActivity(intent);

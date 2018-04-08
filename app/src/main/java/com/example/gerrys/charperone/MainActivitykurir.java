@@ -23,7 +23,7 @@ import android.widget.LinearLayout;
 
 import com.example.gerrys.charperone.Fragment.VolumeFragment;
 
-public class MainActivity extends AppCompatActivity
+public class MainActivitykurir extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     private static final String SELECTED_ITEM_ID = "SELECTED_ITEM_ID";
@@ -38,6 +38,8 @@ public class MainActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_awal);
+
+
 
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         mToolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -105,8 +107,8 @@ public class MainActivity extends AppCompatActivity
             navFragment = new VolumeFragment();
             break;
 
-            case R.id.nav_3:
-                Intent intent = new Intent(MainActivity.this, ConfirmationAdmin.class);
+            case R.id.nav_4:
+                Intent intent = new Intent(MainActivitykurir.this, ConfirmationCourier.class);
                 intent.putExtra("merch", mercId );
                 startActivity(intent);
                 mNavigationView.getMenu().findItem(mPrevSelectedId).setChecked(true);
