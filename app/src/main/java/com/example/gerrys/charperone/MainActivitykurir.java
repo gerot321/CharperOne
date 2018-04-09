@@ -37,7 +37,7 @@ public class MainActivitykurir extends AppCompatActivity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_awal);
+        setContentView(R.layout.activity_awal_kurir);
 
 
 

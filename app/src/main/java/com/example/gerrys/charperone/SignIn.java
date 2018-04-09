@@ -59,12 +59,20 @@ public class SignIn extends AppCompatActivity {
                             user.setPhone(etPhone.getText().toString()); //set phone
 
                             if (user.getPassword().equals(etPassword.getText().toString())) {
+                                if(user.getUserStatus().equals("admin")){
+                                    Intent intent = new Intent(SignIn.this, MainActivity.class);
+                                    intent.putExtra("MerchantId",user.getPhone() );
+                                    Common.currentUser = user;
+                                    startActivity(intent);
 
-                                Intent intent = new Intent(SignIn.this, MainActivity.class);
-                                intent.putExtra("MerchantId",user.getPhone() );
-                                Common.currentUser = user;
-                                startActivity(intent);
-                                finish();
+                                }
+                                else if(user.getUserStatus().equals("kurir")){
+                                    Intent intent = new Intent(SignIn.this, MainActivitykurir.class);
+                                    intent.putExtra("MerchantId",user.getPhone() );
+                                    Common.currentUser = user;
+                                    startActivity(intent);
+                                }
+
 
                             } else {
                                 Toast.makeText(SignIn.this, "Sign in failed!", Toast.LENGTH_SHORT).show();
