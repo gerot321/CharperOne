@@ -28,7 +28,7 @@ public class ConfirmationKurirDetail extends AppCompatActivity {
 
 
     FirebaseDatabase database;
-    DatabaseReference confirm,request,prodReq,prod;
+    DatabaseReference confirm,request,prodReq,prod,merchant;
     String ID;
     productRequest prodss;
     FirebaseRecyclerAdapter<Confirmation, ConfirmationViewHolder> adapter;
@@ -57,6 +57,7 @@ public class ConfirmationKurirDetail extends AppCompatActivity {
         database = FirebaseDatabase.getInstance();
         confirm = database.getReference("Confirmation");
         request = database.getReference("Requests");
+        merchant = database.getReference("Category");
         prodReq = database.getReference("productReq");
         prod = database.getReference("Product");
         prodReq.child(ID).addValueEventListener(new ValueEventListener() {
@@ -82,6 +83,18 @@ public class ConfirmationKurirDetail extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 prodReq.child(ID).child("status").setValue("Order telah sampai pada tujuan");
+                prodReq.child(ID).addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        productRequest prod = dataSnapshot.getValue(productRequest.class);
+                        merchant.child(prod.getMerchantid()).child("saldo").setValue(prod.getTotalprice().toString());
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+
+                    }
+                });
                 Intent intent = new Intent(ConfirmationKurirDetail.this,ConfirmationAdmin.class);
                 startActivity(intent);
             }
