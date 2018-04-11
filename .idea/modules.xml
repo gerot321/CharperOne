@@ -4,9 +4,7 @@
     <modules>
       <module fileurl="file://D:\studio\CharperOne1\CharperOne.iml" filepath="D:\studio\CharperOne1\CharperOne.iml" />
       <module fileurl="file://$PROJECT_DIR$/CharperOne1.iml" filepath="$PROJECT_DIR$/CharperOne1.iml" />
-      <module fileurl="file://D:\studio\CharperOne1\CharperOne1.iml" filepath="D:\studio\CharperOne1\CharperOne1.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://D:\studio\CharperOne1\app\app.iml" filepath="D:\studio\CharperOne1\app\app.iml" />
     </modules>
   </component>
 </project>
