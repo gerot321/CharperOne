@@ -39,7 +39,7 @@ public class ConfirmationKurirDetail extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_confirmationadmin_detail);
+        setContentView(R.layout.activity_confirmation_kurir_detail);
         ID = getIntent().getStringExtra("ConfirmationId");
         reqId = (TextView)findViewById(R.id.reqId);
         prodId = (TextView)findViewById(R.id.prodId);

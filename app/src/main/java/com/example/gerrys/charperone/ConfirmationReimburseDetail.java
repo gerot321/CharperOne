@@ -12,8 +12,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.gerrys.charperone.Model.Confirmation;
-import com.example.gerrys.charperone.Model.Order;
-import com.example.gerrys.charperone.Model.productRequest;
+import com.example.gerrys.charperone.Model.ReimburseReq;
 import com.example.gerrys.charperone.ViewHolder.ConfirmationViewHolder;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.firebase.database.DataSnapshot;
@@ -25,15 +24,15 @@ import com.google.firebase.database.ValueEventListener;
 import java.io.InputStream;
 import java.net.URL;
 
-public class ConfirmationDetail extends AppCompatActivity {
+public class ConfirmationReimburseDetail extends AppCompatActivity {
 
 
     FirebaseDatabase database;
-    DatabaseReference confirm,request,prodReq,prod;
+    DatabaseReference confirm,request,reimburseReq,prod;
     String ID;
-    Confirmation confirmss;
+    ReimburseReq confirmss;
     FirebaseRecyclerAdapter<Confirmation, ConfirmationViewHolder> adapter;
-    TextView ConID,Name,Phone;
+    TextView merchId,AN,bankID;
     ImageView image;
     CardView ConfirmButton;
 
@@ -42,28 +41,27 @@ public class ConfirmationDetail extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_confirmation_detail);
         ID = getIntent().getStringExtra("ConfirmationId");
-        ConID = (TextView)findViewById(R.id.RequestId);
-        Phone = (TextView) findViewById(R.id.AccountId);
-        Name = (TextView)findViewById(R.id.AccountName);
-        image = (ImageView)findViewById(R.id.image_view);
+        merchId = (TextView)findViewById(R.id.Merchant);
+        bankID = (TextView) findViewById(R.id.Ovoid);
+        AN = (TextView)findViewById(R.id.AN);
+        image = (ImageView)findViewById(R.id.image_view2);
 
-        ConfirmButton = (CardView)findViewById(R.id.confirmPayment);
+        ConfirmButton = (CardView)findViewById(R.id.conf);
 
 
 
         database = FirebaseDatabase.getInstance();
-        confirm = database.getReference("Confirmation");
-        request = database.getReference("Requests");
-        prodReq = database.getReference("productReq");
-        prod = database.getReference("Product");
+        reimburseReq = database.getReference("ReimburseReq");
+
         confirm.child(ID).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                confirmss = dataSnapshot.getValue(Confirmation.class);
-                ConID.setText("Request ID : "+confirmss.getId());
-                Phone.setText("Account Number : "+confirmss.getPhone());
-                Name.setText("Name : "+confirmss.getName());
-                new DownLoadImageTask(image).execute(confirmss.getImage());
+                confirmss = dataSnapshot.getValue(ReimburseReq.class);
+                merchId.setText("Merchant ID : "+confirmss.getMerchantId());
+                bankID.setText("Bank ID : "+confirmss.getBankId());
+                AN.setText("Atas Nama : "+confirmss.getAn());
+
+                //new DownLoadImageTask(image).execute(confirmss.getImage());
 
             }
 
@@ -76,41 +74,9 @@ public class ConfirmationDetail extends AppCompatActivity {
         ConfirmButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                request.child(ID).child("product").addValueEventListener(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(DataSnapshot dataSnapshot) {
-                        for (DataSnapshot child: dataSnapshot.getChildren()) {
-                            final Order orders = child.getValue(Order.class);
-                            prod.child(orders.getProductId().toString()).child("MerchantId").addValueEventListener(new ValueEventListener() {
-                                @Override
 
-                                public void onDataChange(DataSnapshot dataSnapshot) {
-
-                                    productRequest req= new productRequest(ID,dataSnapshot.getValue().toString(),orders.getProductId(),
-                                            orders.getProductName().toString(),orders.getQuantity().toString()
-                                            ,orders.getPrice().toString(),orders.getAddress(),"diteruskan ke merchant",orders.getShippingPrice()) ;
-                                    prodReq.push().setValue(req);
-                                }
-
-                                @Override
-                                public void onCancelled(DatabaseError databaseError) {
-
-                                }
-                            });
-
-                        }
-
-                    }
-
-                    @Override
-                    public void onCancelled(DatabaseError databaseError) {
-
-                    }
-                });
-                request.child(ID).child("status").setValue("Confirmed Order");
-                confirm.child(ID).child("status").setValue("Confirmed Order");
-
-                Intent intent = new Intent(ConfirmationDetail.this,ConfirmationAdmin.class);
+                reimburseReq.child(ID).child("status").setValue("Transfered");
+                Intent intent = new Intent(ConfirmationReimburseDetail.this,ConfirmationAdmin.class);
                 startActivity(intent);
             }
         });
