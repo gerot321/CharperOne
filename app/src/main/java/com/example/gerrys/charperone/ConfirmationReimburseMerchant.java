@@ -57,7 +57,7 @@ public class ConfirmationReimburseMerchant extends AppCompatActivity {
                 viewHolder.setItemClickListener(new ItemClickListener() {
                     @Override
                     public void onClick(View view, int position, boolean isLongCLick) {
-                        Intent intent = new Intent(ConfirmationReimburseMerchant.this, ConfirmationKurirDetail.class);
+                        Intent intent = new Intent(ConfirmationReimburseMerchant.this, ConfirmationReimburseDetail.class);
                         intent.putExtra("ConfirmationId", adapter.getRef(position).getKey());
                         startActivity(intent);
                     }

@@ -26,6 +26,8 @@
         <activity android:name=".ConfirmationDetail" />
         <activity android:name=".ConfirmationCourier" />
         <activity android:name=".ConfirmationKurirDetail" />
+        <activity android:name=".ConfirmationReimburseDetail"/>
+        <activity android:name=".ConfirmationReimburseMerchant"/>
 
     </application>
 

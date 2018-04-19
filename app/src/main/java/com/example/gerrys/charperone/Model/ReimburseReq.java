@@ -10,18 +10,37 @@ public class ReimburseReq {
     String bankId;
     String an;
     String status;
+    String amount;
     String image;
 
     public ReimburseReq(){
 
     }
-    public ReimburseReq(String merchantId, String bankId, String an, String status, String image){
+    public ReimburseReq(String merchantId,String bankId,String an,String status,String image,String amount){
         this.merchantId=merchantId;
         this.bankId=bankId;
         this.an=an;
+        this.amount=amount;
         this.image=image;
         this.status=status;
     }
+
+
+    public String getStatus() {
+        return status;
+    }
+
+    public String getAmount() {
+        return amount;
+    }
+
+    public void setAmount(String amount) {
+        this.amount = amount;
+    }
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
 
     public String getImage() {
         return image;

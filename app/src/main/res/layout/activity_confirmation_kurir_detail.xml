@@ -91,7 +91,7 @@
                     android:layout_marginLeft="10dp"
 
                     android:gravity="center_horizontal|start"
-                    android:text="  Confirm Payment"
+                    android:text="      Confirm Order"
                     android:textAllCaps="true"
                     android:textSize="30dp"
                     android:textStyle="bold" />
