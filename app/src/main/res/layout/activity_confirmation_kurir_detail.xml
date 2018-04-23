@@ -8,7 +8,7 @@
     android:gravity="top"
     android:orientation="vertical"
     android:padding="16dp"
-    tools:context="com.example.gerrys.onlinecanteen.Checkout">
+    tools:context="com.example.gerrys.charperone.ConfirmationKurirDetail">
 
 
     <TextView
@@ -22,7 +22,7 @@
         android:id="@+id/prodId"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="15dp"
         android:text="Product Id : "
         android:textSize="15dp" />
 
@@ -30,7 +30,7 @@
         android:id="@+id/prodName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="15dp"
         android:text="Nama product : "
         android:textSize="15dp" />
 
@@ -38,7 +38,7 @@
         android:id="@+id/prodQty"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="15dp"
         android:text="Jumlah Pesanan : "
         android:textSize="15dp" />
 
@@ -47,7 +47,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
 
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="15dp"
         android:text="Alamat Pengiriman : "
         android:textSize="15dp" />
 
@@ -55,54 +55,16 @@
         android:id="@+id/prodPrice"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:layout_marginBottom="150dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="32dp"
         android:text="Total Harga"
         android:textSize="15dp" />
-
-    <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/confirmPayment"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="8dp"
-
-        app:cardElevation="4dp">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginBottom="5dp"
-            android:layout_marginTop="5dp"
-            android:orientation="horizontal">
-
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="9"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/OVO"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-
-                    android:gravity="center_horizontal|start"
-                    android:text="      Confirm Order"
-                    android:textAllCaps="true"
-                    android:textSize="30dp"
-                    android:textStyle="bold" />
-
-
-            </LinearLayout>
-
-
-        </LinearLayout>
-
-    </android.support.v7.widget.CardView>
+    <ImageView
+        android:id="@+id/qrcode"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_width="300dp"
+        android:layout_height="300dp" />
 
 
 

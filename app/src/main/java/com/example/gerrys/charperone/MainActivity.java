@@ -117,6 +117,31 @@ public class MainActivity extends AppCompatActivity
                 startActivity(intent);
                 mNavigationView.getMenu().findItem(mPrevSelectedId).setChecked(true);
                 return;
+            case R.id.nav_5:
+                intent = new Intent(MainActivity.this, ConfirmationAcc.class);
+                intent.putExtra("merch", mercId );
+                startActivity(intent);
+                mNavigationView.getMenu().findItem(mPrevSelectedId).setChecked(true);
+                return;
+
+            case R.id.nav_6:
+                intent = new Intent(MainActivity.this, ConfirmationAccCour.class);
+                intent.putExtra("merch", mercId );
+                startActivity(intent);
+                mNavigationView.getMenu().findItem(mPrevSelectedId).setChecked(true);
+                return;
+            case R.id.nav_7:
+                intent = new Intent(MainActivity.this, ApprovedAccount.class);
+                intent.putExtra("merch", mercId );
+                startActivity(intent);
+                mNavigationView.getMenu().findItem(mPrevSelectedId).setChecked(true);
+                return;
+            case R.id.nav_8:
+                intent = new Intent(MainActivity.this, addPromo.class);
+                intent.putExtra("merch", mercId );
+                startActivity(intent);
+                mNavigationView.getMenu().findItem(mPrevSelectedId).setChecked(true);
+                return;
 
         }
 

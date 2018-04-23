@@ -14,6 +14,23 @@
             android:id="@+id/nav_4"
             android:icon="@drawable/ic_message_text_outline_black_48dp"
             android:title="Confirmation Payment - admin" />
+        <item
+            android:id="@+id/nav_5"
+            android:icon="@drawable/ic_message_text_outline_black_48dp"
+            android:title="Merchant Account Request" />
+
+        <item
+            android:id="@+id/nav_6"
+            android:icon="@drawable/ic_message_text_outline_black_48dp"
+            android:title="Courier Account Request" />
+        <item
+            android:id="@+id/nav_7"
+            android:icon="@drawable/ic_message_text_outline_black_48dp"
+            android:title="Approved Account" />
+        <item
+            android:id="@+id/nav_8"
+            android:icon="@drawable/ic_message_text_outline_black_48dp"
+            android:title="Add Promo" />
 
     </group>
 

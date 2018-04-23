@@ -28,6 +28,13 @@
         <activity android:name=".ConfirmationKurirDetail" />
         <activity android:name=".ConfirmationReimburseDetail"/>
         <activity android:name=".ConfirmationReimburseMerchant"/>
+        <activity android:name=".ApprovedAccount"/>
+        <activity android:name=".AddMerchant"/>
+        <activity android:name=".addPromo"/>
+        <activity android:name=".ConfirmationAcc"/>
+        <activity android:name=".ConfirmationAccDetail"/>
+        <activity android:name=".ConfirmationAccCour"/>
+        <activity android:name=".ConfirmationAccCourDetail"/>
 
     </application>
 

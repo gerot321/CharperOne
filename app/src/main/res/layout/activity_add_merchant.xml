@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context="com.example.gerrys.merchantapps.SignUp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:orientation="vertical">
+
+        <com.rengwuxian.materialedittext.MaterialEditText
+            android:id="@+id/etPhone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Phone Number"
+            android:inputType="phone"
+            android:text="2049909440"
+            android:textColorHint="@android:color/black"
+            android:textSize="10sp"
+            app:met_baseColor="@android:color/black"
+            app:met_floatingLabel="highlight"
+            app:met_maxCharacters="10"
+            app:met_primaryColor="@android:color/black"
+            app:met_singleLineEllipsis="true" />
+
+        <com.rengwuxian.materialedittext.MaterialEditText
+            android:id="@+id/etPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Password"
+            android:inputType="textPassword"
+            android:text="123456"
+            android:textColorHint="@android:color/black"
+            android:textSize="10sp"
+            app:met_baseColor="@android:color/black"
+            app:met_floatingLabel="highlight"
+            app:met_maxCharacters="10"
+            app:met_primaryColor="@android:color/black"
+            app:met_singleLineEllipsis="true" />
+
+        <com.rengwuxian.materialedittext.MaterialEditText
+            android:id="@+id/etName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Merchant Name"
+            android:inputType="textPersonName"
+            android:text="Merchant Name"
+            android:textColorHint="@android:color/black"
+            android:textSize="10sp"
+            app:met_baseColor="@android:color/black"
+            app:met_floatingLabel="highlight"
+            app:met_maxCharacters="24"
+            app:met_primaryColor="@android:color/black"
+            app:met_singleLineEllipsis="true" />
+
+        <com.rengwuxian.materialedittext.MaterialEditText
+            android:id="@+id/etOrigin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Origin"
+            android:inputType="textPersonName"
+            android:text="FJ"
+            android:textColorHint="@android:color/black"
+            android:textSize="10sp"
+            app:met_baseColor="@android:color/black"
+            app:met_floatingLabel="highlight"
+            app:met_maxCharacters="24"
+            app:met_primaryColor="@android:color/black"
+            app:met_singleLineEllipsis="true" />
+
+        <com.rengwuxian.materialedittext.MaterialEditText
+            android:id="@+id/etSaldo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Saldo"
+            android:inputType="phone"
+            android:text="0"
+            android:textColorHint="@android:color/black"
+            android:textSize="10sp"
+            app:met_baseColor="@android:color/black"
+            app:met_floatingLabel="highlight"
+            app:met_maxCharacters="24"
+            app:met_primaryColor="@android:color/black"
+            app:met_singleLineEllipsis="true" />
+
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="126dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/button_Banner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Choose file"
+            android:textSize="10dp" />
+
+        <TextView
+            android:id="@+id/uploadBanner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Pilih Foto Banner"
+            android:textSize="10dp" />
+
+
+    </LinearLayout>
+
+
+
+
+    <Button
+        android:id="@+id/signUp"
+        android:textColor="@android:color/black"
+        android:layout_marginRight="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:shadowColor="@android:color/black"
+        android:text="Sign up"
+        android:textSize="10dp"
+        android:layout_margin="8dp"
+        />
+</RelativeLayout>

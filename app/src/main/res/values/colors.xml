@@ -14,4 +14,7 @@
 
     <color name="colorTimerPrimary">#3F51B5</color>
     <color name="colorTimerPrimaryDark">#303F9F</color>
+    <color name="QRCodeWhiteColor">#ffffff</color>
+
+    <color name="QRCodeBlackColor">#000000</color>
 </resources>
