@@ -49,7 +49,7 @@ public class ConfirmationReimburseDetail extends AppCompatActivity {
     private StorageTask mUploadTask;
     private ProgressBar mProgressBar;
     FirebaseRecyclerAdapter<Confirmation, ConfirmationViewHolder> adapter;
-    TextView merchId,AN,bankID;
+    TextView merchId,AN,bankID,amount;
     ImageView image;
     CardView ConfirmButton;
     private StorageReference mStorageRef;
@@ -62,7 +62,9 @@ public class ConfirmationReimburseDetail extends AppCompatActivity {
         merchId = (TextView)findViewById(R.id.Merchant);
         bankID = (TextView) findViewById(R.id.Ovoid);
         AN = (TextView)findViewById(R.id.AN);
+        amount = (TextView)findViewById(R.id.ReimburseAmount);
         image = (ImageView)findViewById(R.id.bukti);
+
         mStorageRef = FirebaseStorage.getInstance().getReference("uploads");
 
         ConfirmButton = (CardView)findViewById(R.id.conf);
@@ -80,6 +82,7 @@ public class ConfirmationReimburseDetail extends AppCompatActivity {
                 merchId.setText("Merchant ID : "+confirmss.getMerchantId().toString());
                 bankID.setText("Bank ID : "+confirmss.getBankId().toString());
                 AN.setText("Atas Nama : "+confirmss.getAn().toString());
+                amount.setText("Jumlah Reimburse : "+confirmss.getAmount().toString());
 
                 //new DownLoadImageTask(image).execute(confirmss.getImage());
 

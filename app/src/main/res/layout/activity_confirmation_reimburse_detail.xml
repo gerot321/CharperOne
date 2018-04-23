@@ -22,7 +22,7 @@
         android:id="@+id/Ovoid"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="15dp"
         android:text="Ovo ID : "
         android:textSize="15dp" />
 
@@ -30,9 +30,15 @@
         android:id="@+id/AN"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="15dp"
         android:text="Atas Nama : "
         android:textSize="15dp" />
+    <TextView
+        android:id="@+id/ReimburseAmount"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:text="Reimburse Amount : " />
 
     <ImageView
         android:id="@+id/bukti"
