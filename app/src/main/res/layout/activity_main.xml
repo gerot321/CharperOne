@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    tools:context="com.example.gerrys.charperone.FrontActivity">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_centerInParent="true">
+
+
+        <ImageView
+            android:id="@+id/logob"
+            android:layout_width="314dp"
+            android:layout_height="308dp"
+            />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="serif-monospace"
+            android:textSize="20sp"
+            android:gravity="center"
+            android:text="Charperone Personnel" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_alignParentBottom="true"
+        android:weightSum="2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:id="@+id/btnSignUp"
+            android:textColor="@android:color/white"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:shadowColor="@android:color/black"
+
+            android:text="Sign up"
+            android:layout_margin="8dp"
+            />
+
+
+        <Button
+            android:id="@+id/btnSignIn"
+            android:textColor="@android:color/white"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:shadowColor="@android:color/black"
+
+            android:text="Sign in"
+            android:layout_margin="8dp"
+            />
+    </LinearLayout>
+</RelativeLayout>

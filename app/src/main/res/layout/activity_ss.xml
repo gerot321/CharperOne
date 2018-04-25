@@ -1,19 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_gravity="center_vertical"
+    android:gravity="top"
+    android:orientation="vertical"
+    android:padding="16dp"
+    tools:context="com.example.gerrys.onlinecanteen.Checkout">
 
-    tools:context="com.example.gerrys.charperone.FrontActivity">
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_centerInParent="true">
+        android:layout_centerInParent="true"
+        android:layout_marginBottom="50dp">
 
 
+        <ImageView
+            android:id="@+id/logob"
+            android:layout_width="314dp"
+            android:layout_height="308dp"
+            android:layout_margin="20dp"
+            android:gravity="center"
+            />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="serif-monospace"
+            android:textSize="20sp"
+            android:gravity="center"
+            android:text="Charperone Personnel" />
     </LinearLayout>
 
     <LinearLayout
@@ -48,4 +69,7 @@
             android:layout_margin="8dp"
             />
     </LinearLayout>
-</RelativeLayout>
+
+
+
+</LinearLayout>
